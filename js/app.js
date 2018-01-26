@@ -26,9 +26,10 @@ var ViewModel = function() {
   this.foursquareImages = function (location) {
     client_id = 'C5P2ZFFKEW4VIZEVTBA5A5ERV0SWXCSEGK04PCOA4VV5E1MT';
     client_secret = 'CIGS4DXLXLSGY0PCQJOAQLV1PC4PQRIUFX2D15TRAQAMD1VW';
+    var venue;
     for (var i = 0; i < self.locationList().length; i++) {
       if (self.locationList()[i].title === location.title) {
-        var venue = self.locationList()[i].fsid;
+        venue = self.locationList()[i].fsid;
       }
     }
     var fsUrl = 'https://api.foursquare.com/v2/venues/'+venue+'/photos?limit=2&client_id='+client_id+'&client_secret='+client_secret+'&v=20170801';
@@ -45,10 +46,10 @@ var ViewModel = function() {
       error: function() {
         self.locationImages().length = 0;
         self.locationImages.push('images/default.jpg');
-        alert("There was an issue loading Foursquare. Reload to try again!")
+        alert("There was an issue loading Foursquare. Reload to try again!");
       }
     });
-  }
+  };
 
   //Decorative Markers
   this.makeMarkerIcon = function(markerColor) {
@@ -70,7 +71,7 @@ var ViewModel = function() {
       infowindow.open(map,marker);
       infowindow.addListener('closeclick', function() {
         infowindow.marker = null;
-      });
+      })
     };
   };
 
@@ -113,7 +114,7 @@ var ViewModel = function() {
       for (var i=0; i < self.locationList().length; i++) {
         self.locationList()[i].display(true);
         self.locationImages().length = 0;
-        self.locationImages.push('images/default.jpg')
+        self.locationImages.push('images/default.jpg');
       }
       self.infowindow.close();
       self.infowindow.marker = null;
@@ -163,19 +164,12 @@ var ViewModel = function() {
 
       //Mouse Events Handler
       this.marker.addListener('click', self.populateMarker);
-
-      this.marker.addListener('mouseover', function() {
-        this.setIcon(highlightedIcon);
-      });
-      this.marker.addListener('mouseout', function() {
-        this.setIcon(defaultIcon);
-      });
     }
   };
 
   this.initMap();
 
-}
+};
 
 //Google API Error handler
 mapError = function mapError() {
