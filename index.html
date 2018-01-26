@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Neighbourhood Map Project" content="Lower Mainland">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Neighborhood App</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="aside">
+        <div class="nav-box">
+          <h1>Eat Drink Vancouver</h1>
+          <select id="dropdown" data-bind="options:locationList, optionsText: 'title', value: selectedLocation, optionsCaption: 'Select a location', event: {change: selectLocation}"></select>
+          <h4>Foursquare Photos</h4>
+          <div id="images" data-bind="foreach: locationImages">
+            <img data-bind="attr: {src: $data}">
+          </div>
+        </div>
+      </div>
+      <div id="map">
+      </div>
+    </div>
+    <script src="js/libs/knockout-3.2.0.js" charset="utf-8"></script>
+    <script src="js/libs/jquery.min.js" charset="utf-8"></script>
+    <script src="js/locations.js" charset="utf-8"></script>
+    <script src="js/mapstyles.js" charset="utf-8"></script>
+    <script src="js/app.js" charset="utf-8"></script>
+    <script async defer
+     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6NOkl0fDgKDNVdwTbghTbiKgmagsW95w&v=3&callback=initApp" onerror="mapError()">
+    </script>
+  </body>
+</html>
