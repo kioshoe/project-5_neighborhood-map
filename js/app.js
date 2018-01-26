@@ -71,8 +71,8 @@ var ViewModel = function() {
       infowindow.open(map,marker);
       infowindow.addListener('closeclick', function() {
         infowindow.marker = null;
-      })
-    };
+      });
+    }
   };
 
   //When marker is clicked, an infowindow and relevant photos from Foursquare are displayed
