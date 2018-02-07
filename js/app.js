@@ -94,9 +94,8 @@ var ViewModel = function() {
         if (self.markers[i].title == location.title) {
           self.markers[i].setAnimation(google.maps.Animation.DROP);
           self.markers[i].setIcon(self.makeMarkerIcon('d6edf5'));
-          self.markers[i].setVisible(true);
         } else {
-          self.markers[i].setVisible(false);
+          self.markers[i].setIcon(self.makeMarkerIcon('f2f2f2'));
         }
       }
     //Makes all markers visible and resets highlighted icon to default colour
@@ -104,7 +103,6 @@ var ViewModel = function() {
       for (var j = 0; j < self.markers.length; j++) {
         self.markers[j].setAnimation(google.maps.Animation.DROP);
         self.markers[j].setIcon(self.makeMarkerIcon('f2f2f2'));
-        self.markers[j].setVisible(true);
       }
     }
   };
@@ -113,6 +111,7 @@ var ViewModel = function() {
   this.selectLocation = function() {
     if (self.selectedLocation() === undefined) {
       for (var i = 0; i < self.locationList().length; i++) {
+        self.locationList()[i].display(true);
         self.locationImages().length = 0;
         self.locationImages.push('images/default.jpg');
       }
@@ -120,6 +119,13 @@ var ViewModel = function() {
       self.infowindow.marker = null;
     //When location is chosen, relevant photos and marker with infowindow is displayed
     } else {
+      for (var j = 0; j < self.locationList().length; j++) {
+        if (self.locationList()[j].title != self.selectedLocation().title) {
+          self.locationList()[j].display(false);
+        } else {
+          self.locationList()[j].display(true);
+        }
+      }
       self.foursquareImages(self.selectedLocation());
     }
     self.filterMarker(self.selectedLocation());
@@ -129,6 +135,13 @@ var ViewModel = function() {
   this.clickList = function(clicked) {
     self.foursquareImages(clicked);
     self.filterMarker(clicked);
+    for (var i = 0; i < self.locationList().length; i++) {
+      if (self.locationList()[i].title != clicked.title) {
+        self.locationList()[i].display(false);
+      } else {
+        self.locationList()[i].display(true);
+      }
+    }
   };
 
   //Loads Google Map API

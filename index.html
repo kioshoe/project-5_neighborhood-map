@@ -17,7 +17,7 @@
           <select id="dropdown" data-bind="options:locationList, optionsText: 'title', value: selectedLocation, optionsCaption: 'Select a location', event: {change: selectLocation}"></select>
           <h5>
             <ul data-bind="foreach: locationList">
-              <li data-bind="text: title, click: $parent.clickList"></li>
+              <li data-bind="visible: display, text: title, click: $parent.clickList"></li>
             </ul>
           </h5>
           <div id="images" data-bind="foreach: locationImages">
