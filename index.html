@@ -10,22 +10,20 @@
   </head>
   <body>
     <div class="container">
-      <div id="sidebar">
+      <div class="aside" id="sidebar">
         <button id="nav-toggle" data-bind="click: toggleSidebar">&#9776</button>
         <div id="nav-box">
           <h1>Eat Drink Vancouver</h1>
           <select id="dropdown" data-bind="options:locationList, optionsText: 'title', value: selectedLocation, optionsCaption: 'Select a location', event: {change: selectLocation}"></select>
-          <h5>
-            <ul data-bind="foreach: locationList">
-              <li data-bind="visible: display, text: title, click: $parent.clickList"></li>
-            </ul>
-          </h5>
+          <ul data-bind="foreach: locationList">
+            <h5><li data-bind="visible: display, text: title, click: $parent.clickList"></li></h5>
+          </ul>
           <div id="images" data-bind="foreach: locationImages">
             <img data-bind="attr: {src: $data}">
           </div>
         </div>
       </div>
-      <div id="map">
+      <div class="main" id="map">
       </div>
     </div>
     <script src="js/libs/knockout-3.2.0.js" charset="utf-8"></script>
