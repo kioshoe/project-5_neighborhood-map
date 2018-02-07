@@ -3,6 +3,7 @@ var map, client_id, client_secret;
 var ViewModel = function() {
   var self = this;
 
+
   this.locationList = ko.observableArray([]);
   this.selectedLocation = ko.observable();
   this.locationImages = ko.observableArray(['images/default.jpg']);
@@ -111,8 +112,7 @@ var ViewModel = function() {
   //Handles selection of a location in the dropdown list
   this.selectLocation = function() {
     if (self.selectedLocation() === undefined) {
-      for (var i=0; i < self.locationList().length; i++) {
-        self.locationList()[i].display(true);
+      for (var i = 0; i < self.locationList().length; i++) {
         self.locationImages().length = 0;
         self.locationImages.push('images/default.jpg');
       }
@@ -120,16 +120,15 @@ var ViewModel = function() {
       self.infowindow.marker = null;
     //When location is chosen, relevant photos and marker with infowindow is displayed
     } else {
-      for (var j = 0; j < self.locationList().length; j++) {
-        if (self.locationList()[j].title != self.selectedLocation().title) {
-          self.locationList()[j].display(false);
-        } else {
-          self.locationList()[j].display(true);
-        }
-      }
       self.foursquareImages(self.selectedLocation());
     }
     self.filterMarker(self.selectedLocation());
+  };
+
+  //Handles selection of location in sidebar list
+  this.clickList = function(clicked) {
+    self.foursquareImages(clicked);
+    self.filterMarker(clicked);
   };
 
   //Loads Google Map API
@@ -169,6 +168,12 @@ var ViewModel = function() {
 
   this.initMap();
 
+  //Hamburger sidebar functionality
+  this.toggleSidebar = function() {
+    document.getElementById("sidebar").classList.toggle('active');
+    document.getElementById("nav-toggle").classList.toggle('active');
+    document.getElementById("map").classList.toggle('active');
+  };
 };
 
 //Google API Error handler
