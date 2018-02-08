@@ -32,12 +32,12 @@ h4,h5 {
   height:100%;
   width:360px;
   left: -320px;
-  overflow-y: scroll;
 }
 
 #sidebar.active {
   left: 0px;
   width: 340px;
+  overflow-y:scroll;
 }
 
 #nav-box {
@@ -67,7 +67,7 @@ h4,h5 {
 }
 
 #dropdown.active {
-  width:100%;
+  width:90%;
 }
 
 #images {

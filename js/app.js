@@ -136,12 +136,12 @@ var ViewModel = function() {
   //Handles selection of location in sidebar list
   this.clickList = function(clicked) {
     self.foursquareImages(clicked);
-    self.filterMarker(clicked);
-    for (var i = 0; i < self.locationList().length; i++) {
-      if (self.locationList()[i].title != clicked.title) {
-        self.locationList()[i].display(false);
+    for (var i=0; i<self.locationList().length; i++){
+      if (self.markers[i].title == clicked.title) {
+        self.markers[i].setAnimation(google.maps.Animation.DROP);
+        self.markers[i].setIcon(self.makeMarkerIcon('d6edf5'));
       } else {
-        self.locationList()[i].display(true);
+        self.markers[i].setIcon(self.makeMarkerIcon('f2f2f2'));
       }
     }
   };
