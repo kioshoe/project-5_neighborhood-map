@@ -94,8 +94,9 @@ var ViewModel = function() {
         if (self.markers[i].title == location.title) {
           self.markers[i].setAnimation(google.maps.Animation.DROP);
           self.markers[i].setIcon(self.makeMarkerIcon('d6edf5'));
+          self.markers[i].setVisible(true);
         } else {
-          self.markers[i].setIcon(self.makeMarkerIcon('f2f2f2'));
+          self.markers[i].setVisible(false);
         }
       }
     //Makes all markers visible and resets highlighted icon to default colour
@@ -103,6 +104,7 @@ var ViewModel = function() {
       for (var j = 0; j < self.markers.length; j++) {
         self.markers[j].setAnimation(google.maps.Animation.DROP);
         self.markers[j].setIcon(self.makeMarkerIcon('f2f2f2'));
+        self.markers[j].setVisible(true);
       }
     }
   };
@@ -186,6 +188,7 @@ var ViewModel = function() {
     document.getElementById("sidebar").classList.toggle('active');
     document.getElementById("nav-toggle").classList.toggle('active');
     document.getElementById("map").classList.toggle('active');
+    document.getElementById("dropdown").classList.toggle('active');
   };
 };
 

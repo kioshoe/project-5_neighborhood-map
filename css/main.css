@@ -30,12 +30,14 @@ h4,h5 {
   position: fixed;
   background:#fff;
   height:100%;
-  width:380px;
-  left: -353px;
+  width:360px;
+  left: -320px;
+  overflow-y: scroll;
 }
 
 #sidebar.active {
   left: 0px;
+  width: 340px;
 }
 
 #nav-box {
@@ -47,22 +49,29 @@ h4,h5 {
 
 #nav-toggle {
   position: absolute;
-  left: 360px;
+  font-size: 16px;
+  left: 320px;
   top: 2px;
+  width: 40px;
+  height: 40px;
 }
 
 #nav-toggle.active{
   position: absolute;
-  left: 350px;
+  left: 0px;
   top: 2px;
 }
 
 #dropdown {
+  width:0;
+}
+
+#dropdown.active {
   width:100%;
 }
 
 #images {
-  padding-left: 20px;
+  padding: 10px;
 }
 
 #map{
@@ -74,6 +83,6 @@ h4,h5 {
 }
 
 #map.active{
-  left: 380px;
+  left: 340px;
 }
 
